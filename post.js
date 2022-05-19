@@ -60,7 +60,7 @@ function enviaFormPipz() {
         'Email': emailInput.value,
         'CompanyName': CMInput.value,
         'Custom Fields Company Razao Social': CFInput.value,
-        'Company City Name': cidadeInput.value,
+        'Company City Name': `${cidadeInput.value} - ${bairroInput.value}`,
         'Company State': estadoInput.value,
         'Company Postal Code': CEPInput.value,
         'Company Region Name': bairroInput.value,
@@ -361,8 +361,8 @@ submitButton.addEventListener("click", function (event) {
     if (camposInvalidos === 0) {
         RFIput.style.border = "1px solid black"
         document.querySelector('.etapa3 p').style.display = 'none'
-        enviaFormAutomate()
-        enviaFormPipz()
+        // enviaFormAutomate()
+        // enviaFormPipz()
         enviaForm()
     }
 }) 
