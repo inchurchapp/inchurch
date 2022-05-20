@@ -361,8 +361,8 @@ submitButton.addEventListener("click", function (event) {
     if (camposInvalidos === 0) {
         RFIput.style.border = "1px solid black"
         document.querySelector('.etapa3 p').style.display = 'none'
-        // enviaFormAutomate()
-        // enviaFormPipz()
+        enviaFormAutomate()
+        enviaFormPipz()
         enviaForm()
     }
 }) 
