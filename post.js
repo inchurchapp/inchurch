@@ -25,14 +25,61 @@ const passar2 = document.querySelector(".skip3")
 
 const fields2 = document.querySelectorAll('.etp2[required]')
 const fields3 = document.querySelectorAll('.etp3[required]')
-console.log(fields3)
-const fields1 = document.querySelectorAll('.etp1[required]')
+const fields1 = document.querySelectorAll('.etp1[required]'.value)
+console.log(fields1)
 
 const fields = document.querySelectorAll('select')
-console.log(fields)
 
 const msgSucesso = document.querySelector('.sombra')
 
+document.addEventListener("keypress" , function(e) {
+    
+    if(e.key ==="Enter" && document.getElementById('step1').style.display === "flex"){   
+        console.log(`${e.key ==="Enter" && document.getElementById('step1').style.display === "flex"} primeira condição`) 
+        skip2()
+    } else if(e.key ==="Enter" && document.getElementById('step2').style.display === "flex"){
+        console.log(`${e.key ==="Enter" && document.getElementById('step2').style.display === "flex"} segunda condição`)
+        skip3()
+        console.log("enter 2")
+        console.log(e.key) 
+    } else if(e.key ==="Enter" && document.getElementById('step3').style.display === "flex"){
+        event.preventDefault()
+    var camposInvalidos = 0
+    checarValidade(RFIput)
+    console.log(checarValidade(RFIput))
+
+    for (const c of fields3) {
+        if (!c.checkValidity()) {
+            document.querySelector('.etapa3 p').style.display = 'block'
+            c.style.border = "1px solid red"
+            camposInvalidos = camposInvalidos + 1
+        } else {
+            c.style.border = "1px solid black"
+        }
+        console.log(c)
+    } 
+
+    if (checarValidade(RFIput) === false) {
+        RFIput.style.border = "1px solid red"
+        document.querySelector('.etapa3 p').style.display = 'block'
+        camposInvalidos = camposInvalidos + 1
+    }
+
+    if (TRFInput.value.length !== 15){
+        TRFInput.style.border = "1px solid red"
+        document.querySelector('.etapa3 p').style.display = 'block'
+        camposInvalidos = camposInvalidos + 1
+    }
+
+    if (camposInvalidos === 0) {
+        RFIput.style.border = "1px solid black"
+        document.querySelector('.etapa3 p').style.display = 'none'
+        // enviaFormAutomate()
+        // enviaFormPipz()
+        enviaForm()
+    }
+    }
+})
 
 // Função enviar
 
@@ -265,10 +312,6 @@ function skip2() {
     var camposInvalidos = 0
 
     checarValidade(nomeInput)
-    console.log(`Resultado checar validade ${checarValidade(nomeInput)}`)
-
-    console.log(`O número de campos invalidos é ${camposInvalidos}`)
-
     for (var c of fields1) {
         if (!c.checkValidity()) {
             c.style.border = "1px solid red"
@@ -286,8 +329,9 @@ function skip2() {
     } else {
         nomeInput.style.border = "1px solid black"
     }
+    console.log(document.querySelector('.etapa3').style.display === '')
 
-    if (camposInvalidos === 0) {
+    if (camposInvalidos === 0 && document.querySelector('.etapa3').style.display === '') {
         console.log(camposInvalidos)
         document.getElementById('step1').style.display = "none";
         document.getElementById('step2').style.display = "flex";
@@ -296,6 +340,8 @@ function skip2() {
 }
 
 function skip3() {
+    
+    console.log("skip3")
 
     var camposInvalidos = 0
 
@@ -311,7 +357,9 @@ function skip3() {
         document.getElementById('step2').style.display = "none";
         document.getElementById('step3').style.display = "flex";
         document.querySelector('.etapa2 p').style.display = 'none';
+        document.querySelector('.etapa2').style.display = 'none';
     }
+    console.log(document.querySelector('.etapa3').style.display === '')
 }
 
 // Botões  de voltar
@@ -361,8 +409,8 @@ submitButton.addEventListener("click", function (event) {
     if (camposInvalidos === 0) {
         RFIput.style.border = "1px solid black"
         document.querySelector('.etapa3 p').style.display = 'none'
-        enviaFormAutomate()
-        enviaFormPipz()
+        // enviaFormAutomate()
+        // enviaFormPipz()
         enviaForm()
     }
 }) 
