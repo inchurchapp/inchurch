@@ -25,7 +25,7 @@ const passar2 = document.querySelector(".skip3")
 
 const fields2 = document.querySelectorAll('.etp2[required]')
 const fields3 = document.querySelectorAll('.etp3[required]')
-const fields1 = document.querySelectorAll('.etp1[required]'.value)
+const fields1 = document.querySelectorAll('.etp1[required]')
 console.log(fields1)
 
 const fields = document.querySelectorAll('select')
@@ -34,19 +34,14 @@ const msgSucesso = document.querySelector('.sombra')
 
 document.addEventListener("keypress" , function(e) {
     
-    if(e.key ==="Enter" && document.getElementById('step1').style.display === "flex"){   
-        console.log(`${e.key ==="Enter" && document.getElementById('step1').style.display === "flex"} primeira condição`) 
+    if(e.key ==="Enter" && document.getElementById('step1').style.display === "flex"){
         skip2()
     } else if(e.key ==="Enter" && document.getElementById('step2').style.display === "flex"){
-        console.log(`${e.key ==="Enter" && document.getElementById('step2').style.display === "flex"} segunda condição`)
         skip3()
-        console.log("enter 2")
-        console.log(e.key) 
     } else if(e.key ==="Enter" && document.getElementById('step3').style.display === "flex"){
         event.preventDefault()
     var camposInvalidos = 0
     checarValidade(RFIput)
-    console.log(checarValidade(RFIput))
 
     for (const c of fields3) {
         if (!c.checkValidity()) {
@@ -56,7 +51,6 @@ document.addEventListener("keypress" , function(e) {
         } else {
             c.style.border = "1px solid black"
         }
-        console.log(c)
     } 
 
     if (checarValidade(RFIput) === false) {
@@ -74,8 +68,8 @@ document.addEventListener("keypress" , function(e) {
     if (camposInvalidos === 0) {
         RFIput.style.border = "1px solid black"
         document.querySelector('.etapa3 p').style.display = 'none'
-        // enviaFormAutomate()
-        // enviaFormPipz()
+        enviaFormAutomate()
+        enviaFormPipz()
         enviaForm()
     }
     }
@@ -122,7 +116,6 @@ function enviaFormPipz() {
         'Custom Fields Company Segunda Solucao': solucao2Input.value,
         'Custom Fields Company Terceira Solucao': solucao3Input.value
     }
-    console.log(dados)
     post(url, dados)
 }
 
@@ -148,7 +141,6 @@ function enviaFormAutomate() {
         'Custom Fields Company Segunda Solucao': solucao2Input.value,
         'Custom Fields Company Terceira Solucao': solucao3Input.value
     }
-    console.log(dados)
     post(url, dados)
 }
 
@@ -174,7 +166,6 @@ function enviaForm() {
         'Custom Fields Company Segunda Solucao': solucao2Input.value,
         'Custom Fields Company Terceira Solucao': solucao3Input.value
     }
-    console.log(dados)
     post(url, dados)
 }
 
@@ -208,13 +199,9 @@ CEPInput.addEventListener("keyup", (e) => {
             response.json()
                 .then(data => showData(data))
         })
-        .catch(e => console.log('Deu erro'))
-
-    console.log(CEPInput.value)
 })
 
 emailInput.addEventListener("blur", () => {
-    console.log(emailInput.checkValidity())
     if (!emailInput.checkValidity()) {
         emailInput.style.border = "1px solid red"
         emailInput.style.focus = 'red'
@@ -237,7 +224,6 @@ CNPJInput.addEventListener('keypress', () =>{
 
 for (let campo of fields1) {
     campo.addEventListener("blur", () => {
-        console.log(campo.checkValidity())
         if (!campo.checkValidity()) {
             campo.style.border = "1px solid red"
             campo.style.focus = 'red'
@@ -248,7 +234,6 @@ for (let campo of fields1) {
 }
 for (let campo of fields2) {
     campo.addEventListener("blur", () => {
-        console.log(campo.checkValidity())
         if (!campo.checkValidity()) {
             campo.style.border = "1px solid red"
             campo.style.focus = 'red'
@@ -259,7 +244,6 @@ for (let campo of fields2) {
 }
 for (let campo of fields3) {
     campo.addEventListener("blur", () => {
-        console.log(campo.checkValidity())
         if (!campo.checkValidity()) {
             campo.style.border = "1px solid red"
             campo.style.focus = 'red'
@@ -329,10 +313,9 @@ function skip2() {
     } else {
         nomeInput.style.border = "1px solid black"
     }
-    console.log(document.querySelector('.etapa3').style.display === '')
 
     if (camposInvalidos === 0 && document.querySelector('.etapa3').style.display === '') {
-        console.log(camposInvalidos)
+        
         document.getElementById('step1').style.display = "none";
         document.getElementById('step2').style.display = "flex";
         document.querySelector('.etapa1 p').style.display = "none";
@@ -340,8 +323,6 @@ function skip2() {
 }
 
 function skip3() {
-    
-    console.log("skip3")
 
     var camposInvalidos = 0
 
@@ -359,7 +340,6 @@ function skip3() {
         document.querySelector('.etapa2 p').style.display = 'none';
         document.querySelector('.etapa2').style.display = 'none';
     }
-    console.log(document.querySelector('.etapa3').style.display === '')
 }
 
 // Botões  de voltar
@@ -381,7 +361,6 @@ submitButton.addEventListener("click", function (event) {
     event.preventDefault()
     var camposInvalidos = 0
     checarValidade(RFIput)
-    console.log(checarValidade(RFIput))
 
     for (const c of fields3) {
         if (!c.checkValidity()) {
@@ -391,7 +370,6 @@ submitButton.addEventListener("click", function (event) {
         } else {
             c.style.border = "1px solid black"
         }
-        console.log(c)
     } 
 
     if (checarValidade(RFIput) === false) {
@@ -409,8 +387,8 @@ submitButton.addEventListener("click", function (event) {
     if (camposInvalidos === 0) {
         RFIput.style.border = "1px solid black"
         document.querySelector('.etapa3 p').style.display = 'none'
-        // enviaFormAutomate()
-        // enviaFormPipz()
+        enviaFormAutomate()
+        enviaFormPipz()
         enviaForm()
     }
 }) 
