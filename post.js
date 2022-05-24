@@ -137,7 +137,7 @@ function enviaFormAutomate() {
         'Custom Fields Company Usuário Granito': RFIput.value,
         'Custom Fields Company Email Responsável Granito': ERFInput.value,
         'Custom Fields Company Telefone Responsável Granito': TRFInput.value,
-        'Custom Fields Company Primeira Solucao': document.querySelector('select').value,
+        'Custom Fields Company Primeira Solucao': solucao1Input.value,
         'Custom Fields Company Segunda Solucao': solucao2Input.value,
         'Custom Fields Company Terceira Solucao': solucao3Input.value
     }
