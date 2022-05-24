@@ -25,14 +25,55 @@ const passar2 = document.querySelector(".skip3")
 
 const fields2 = document.querySelectorAll('.etp2[required]')
 const fields3 = document.querySelectorAll('.etp3[required]')
-console.log(fields3)
 const fields1 = document.querySelectorAll('.etp1[required]')
+console.log(fields1)
 
 const fields = document.querySelectorAll('select')
-console.log(fields)
 
 const msgSucesso = document.querySelector('.sombra')
 
+document.addEventListener("keypress" , function(e) {
+    
+    if(e.key ==="Enter" && document.getElementById('step1').style.display === "flex"){
+        skip2()
+    } else if(e.key ==="Enter" && document.getElementById('step2').style.display === "flex"){
+        skip3()
+    } else if(e.key ==="Enter" && document.getElementById('step3').style.display === "flex"){
+        event.preventDefault()
+    var camposInvalidos = 0
+    checarValidade(RFIput)
+
+    for (const c of fields3) {
+        if (!c.checkValidity()) {
+            document.querySelector('.etapa3 p').style.display = 'block'
+            c.style.border = "1px solid red"
+            camposInvalidos = camposInvalidos + 1
+        } else {
+            c.style.border = "1px solid black"
+        }
+    } 
+
+    if (checarValidade(RFIput) === false) {
+        RFIput.style.border = "1px solid red"
+        document.querySelector('.etapa3 p').style.display = 'block'
+        camposInvalidos = camposInvalidos + 1
+    }
+
+    if (TRFInput.value.length !== 15){
+        TRFInput.style.border = "1px solid red"
+        document.querySelector('.etapa3 p').style.display = 'block'
+        camposInvalidos = camposInvalidos + 1
+    }
+
+    if (camposInvalidos === 0) {
+        RFIput.style.border = "1px solid black"
+        document.querySelector('.etapa3 p').style.display = 'none'
+        enviaFormAutomate()
+        enviaFormPipz()
+        enviaForm()
+    }
+    }
+})
 
 // Função enviar
 
@@ -58,7 +99,7 @@ function enviaFormPipz() {
     dados = {
         'Name': nomeInput.value,
         'Email': emailInput.value,
-        'CompanyName': CMInput.value,
+        'CompanyName': `${CMInput.value} - ${bairroInput.value}`,
         'Custom Fields Company Razao Social': CFInput.value,
         'Company City Name': cidadeInput.value,
         'Company State': estadoInput.value,
@@ -75,7 +116,6 @@ function enviaFormPipz() {
         'Custom Fields Company Segunda Solucao': solucao2Input.value,
         'Custom Fields Company Terceira Solucao': solucao3Input.value
     }
-    console.log(dados)
     post(url, dados)
 }
 
@@ -84,7 +124,7 @@ function enviaFormAutomate() {
     dados = {
         'Name': nomeInput.value,
         'Email': emailInput.value,
-        'CompanyName': CMInput.value,
+        'CompanyName': `${CMInput.value} - ${bairroInput.value}`,
         'Custom Fields Company Razao Social': CFInput.value,
         'Company City Name': cidadeInput.value,
         'Company State': estadoInput.value,
@@ -97,11 +137,10 @@ function enviaFormAutomate() {
         'Custom Fields Company Usuário Granito': RFIput.value,
         'Custom Fields Company Email Responsável Granito': ERFInput.value,
         'Custom Fields Company Telefone Responsável Granito': TRFInput.value,
-        'Custom Fields Company Primeira Solucao': document.querySelector('select').value,
+        'Custom Fields Company Primeira Solucao': solucao1Input.value,
         'Custom Fields Company Segunda Solucao': solucao2Input.value,
         'Custom Fields Company Terceira Solucao': solucao3Input.value
     }
-    console.log(dados)
     post(url, dados)
 }
 
@@ -127,8 +166,11 @@ function enviaForm() {
         'Custom Fields Company Segunda Solucao': solucao2Input.value,
         'Custom Fields Company Terceira Solucao': solucao3Input.value
     }
-    console.log(dados)
     post(url, dados)
+    scrollTo({
+        top: 0,
+        behavior: "smooth"
+    })
 }
 
 // reload na mensagem de sucesso
@@ -161,13 +203,9 @@ CEPInput.addEventListener("keyup", (e) => {
             response.json()
                 .then(data => showData(data))
         })
-        .catch(e => console.log('Deu erro'))
-
-    console.log(CEPInput.value)
 })
 
 emailInput.addEventListener("blur", () => {
-    console.log(emailInput.checkValidity())
     if (!emailInput.checkValidity()) {
         emailInput.style.border = "1px solid red"
         emailInput.style.focus = 'red'
@@ -190,7 +228,6 @@ CNPJInput.addEventListener('keypress', () =>{
 
 for (let campo of fields1) {
     campo.addEventListener("blur", () => {
-        console.log(campo.checkValidity())
         if (!campo.checkValidity()) {
             campo.style.border = "1px solid red"
             campo.style.focus = 'red'
@@ -201,7 +238,6 @@ for (let campo of fields1) {
 }
 for (let campo of fields2) {
     campo.addEventListener("blur", () => {
-        console.log(campo.checkValidity())
         if (!campo.checkValidity()) {
             campo.style.border = "1px solid red"
             campo.style.focus = 'red'
@@ -212,7 +248,6 @@ for (let campo of fields2) {
 }
 for (let campo of fields3) {
     campo.addEventListener("blur", () => {
-        console.log(campo.checkValidity())
         if (!campo.checkValidity()) {
             campo.style.border = "1px solid red"
             campo.style.focus = 'red'
@@ -265,10 +300,6 @@ function skip2() {
     var camposInvalidos = 0
 
     checarValidade(nomeInput)
-    console.log(`Resultado checar validade ${checarValidade(nomeInput)}`)
-
-    console.log(`O número de campos invalidos é ${camposInvalidos}`)
-
     for (var c of fields1) {
         if (!c.checkValidity()) {
             c.style.border = "1px solid red"
@@ -287,8 +318,8 @@ function skip2() {
         nomeInput.style.border = "1px solid black"
     }
 
-    if (camposInvalidos === 0) {
-        console.log(camposInvalidos)
+    if (camposInvalidos === 0 && document.querySelector('.etapa3').style.display === '') {
+        
         document.getElementById('step1').style.display = "none";
         document.getElementById('step2').style.display = "flex";
         document.querySelector('.etapa1 p').style.display = "none";
@@ -311,6 +342,7 @@ function skip3() {
         document.getElementById('step2').style.display = "none";
         document.getElementById('step3').style.display = "flex";
         document.querySelector('.etapa2 p').style.display = 'none';
+        document.querySelector('.etapa2').style.display = 'none';
     }
 }
 
@@ -333,7 +365,6 @@ submitButton.addEventListener("click", function (event) {
     event.preventDefault()
     var camposInvalidos = 0
     checarValidade(RFIput)
-    console.log(checarValidade(RFIput))
 
     for (const c of fields3) {
         if (!c.checkValidity()) {
@@ -343,7 +374,6 @@ submitButton.addEventListener("click", function (event) {
         } else {
             c.style.border = "1px solid black"
         }
-        console.log(c)
     } 
 
     if (checarValidade(RFIput) === false) {

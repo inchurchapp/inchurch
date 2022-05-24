@@ -56,9 +56,9 @@ p{
     display: none;
     position: absolute;
     top: 0;
-    background: #000000a2;
-    width: 100vw;
-    height: 100vh;
+    background: #00000071;
+    width: 100%;
+    height: 100em;
 }
 
 .sombra small{
@@ -94,6 +94,7 @@ p{
 }
 
 .mensagem{
+    position:sticky;
     margin: 3px;
     display: flex;
     flex-direction: column-reverse;
