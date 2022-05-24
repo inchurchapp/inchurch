@@ -68,8 +68,8 @@ document.addEventListener("keypress" , function(e) {
     if (camposInvalidos === 0) {
         RFIput.style.border = "1px solid black"
         document.querySelector('.etapa3 p').style.display = 'none'
-        enviaFormAutomate()
-        enviaFormPipz()
+        // enviaFormAutomate()
+        // enviaFormPipz()
         enviaForm()
     }
     }
@@ -167,6 +167,10 @@ function enviaForm() {
         'Custom Fields Company Terceira Solucao': solucao3Input.value
     }
     post(url, dados)
+    scrollTo({
+        top: 0,
+        behavior: "smooth"
+    })
 }
 
 // reload na mensagem de sucesso
@@ -387,8 +391,8 @@ submitButton.addEventListener("click", function (event) {
     if (camposInvalidos === 0) {
         RFIput.style.border = "1px solid black"
         document.querySelector('.etapa3 p').style.display = 'none'
-        enviaFormAutomate()
-        enviaFormPipz()
+        // enviaFormAutomate()
+        // enviaFormPipz()
         enviaForm()
     }
 }) 
