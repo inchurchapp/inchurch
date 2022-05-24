@@ -99,9 +99,9 @@ function enviaFormPipz() {
     dados = {
         'Name': nomeInput.value,
         'Email': emailInput.value,
-        'CompanyName': CMInput.value,
+        'CompanyName': `${CMInput.value} - ${bairroInput.value}`,
         'Custom Fields Company Razao Social': CFInput.value,
-        'Company City Name': `${cidadeInput.value} - ${bairroInput.value}`,
+        'Company City Name': `${cidadeInput.value}`,
         'Company State': estadoInput.value,
         'Company Postal Code': CEPInput.value,
         'Company Region Name': bairroInput.value,
@@ -124,7 +124,7 @@ function enviaFormAutomate() {
     dados = {
         'Name': nomeInput.value,
         'Email': emailInput.value,
-        'CompanyName': CMInput.value,
+        'CompanyName': `${CMInput.value} - ${bairroInput.value}`,
         'Custom Fields Company Razao Social': CFInput.value,
         'Company City Name': cidadeInput.value,
         'Company State': estadoInput.value,
