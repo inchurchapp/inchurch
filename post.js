@@ -101,7 +101,7 @@ function enviaFormPipz() {
         'Email': emailInput.value,
         'CompanyName': `${CMInput.value} - ${bairroInput.value}`,
         'Custom Fields Company Razao Social': CFInput.value,
-        'Company City Name': `${cidadeInput.value}`,
+        'Company City Name': cidadeInput.value,
         'Company State': estadoInput.value,
         'Company Postal Code': CEPInput.value,
         'Company Region Name': bairroInput.value,
