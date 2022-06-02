@@ -7,7 +7,7 @@
     height: 100em;
 }
 .mensagemSucesso__card{
-    display: none;
+    /* display: none; */
     position: absolute;
     top: 70px;
     left: 50%;

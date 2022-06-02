@@ -20,6 +20,11 @@ const solucao1Input = document.querySelector("#CustomFieldsCompanyPrimeiraSoluca
 const solucao2Input = document.querySelector("#CustomFieldsCompanySegundaSolucao")
 const solucao3Input = document.querySelector("#CustomFieldsCompanyTerceiraSolucao")
 
+const NomeResponsavel = document.querySelector("#NameResponsavel")
+const EmailResponsavel = document.querySelector("#EmailResponsavel")
+const TelefoneResponsavel = document.querySelector("#TelefoneResponsavel")
+
+
 const passar1 = document.querySelector(".skip2")
 const passar2 = document.querySelector(".skip3")
 
@@ -40,13 +45,15 @@ document.addEventListener("keypress" , function(e) {
     } else if(e.key ==="Enter" && document.getElementById('step2').style.display === "flex"){
         skip3()
     } else if(e.key ==="Enter" && document.getElementById('step3').style.display === "flex"){
+        skip4()
+    }else if(e.key ==="Enter" && document.getElementById('step4').style.display === "flex"){
         event.preventDefault()
     var camposInvalidos = 0
     checarValidade(RFIput)
 
-    for (const c of fields3) {
+    for (const c of fields4) {
         if (!c.checkValidity()) {
-            document.querySelector('.etapa3 p').style.display = 'block'
+            document.querySelector('.etapa4 p').style.display = 'block'
             c.style.border = "1px solid red"
             camposInvalidos = camposInvalidos + 1
         } else {
@@ -87,7 +94,7 @@ function post(url, dados) {
             return response.json()
         })
         .then(function (response) {
-            document.querySelector('.sombra').style.display = 'block'
+            document.querySelector('.mensagemSucesso').style.display = 'block'
             return
         })
 
@@ -116,7 +123,10 @@ function enviaFormPipz() {
         'Custom Fields Company Primeira Solucao': solucao1Input.value,
         'Custom Fields Company Segunda Solucao': solucao2Input.value,
         'Custom Fields Company Terceira Solucao': solucao3Input.value,
-        
+        'Nome Responsavel': NomeResponsavel.value,
+        'EmailResponsavel': EmailResponsavel.value,
+        'TelefoneResponsavel': TelefoneResponsavel.value
+
     }
     post(url, dados)
 }
@@ -141,7 +151,10 @@ function enviaFormAutomate() {
         'Custom Fields Company Telefone Responsável Granito': TRFInput.value,
         'Custom Fields Company Primeira Solucao': solucao1Input.value,
         'Custom Fields Company Segunda Solucao': solucao2Input.value,
-        'Custom Fields Company Terceira Solucao': solucao3Input.value
+        'Custom Fields Company Terceira Solucao': solucao3Input.value,
+        'Nome Responsavel': NomeResponsavel.value,
+        'EmailResponsavel': EmailResponsavel.value,
+        'TelefoneResponsavel': TelefoneResponsavel.value
     }
     post(url, dados)
 }
@@ -166,7 +179,10 @@ function enviaForm() {
         'Custom Fields Company Telefone Responsável Granito': TRFInput.value,
         'Custom Fields Company Primeira Solucao': solucao1Input.value,
         'Custom Fields Company Segunda Solucao': solucao2Input.value,
-        'Custom Fields Company Terceira Solucao': solucao3Input.value
+        'Custom Fields Company Terceira Solucao': solucao3Input.value,
+        'Nome Responsavel': NomeResponsavel.value,
+        'EmailResponsavel': EmailResponsavel.value,
+        'TelefoneResponsavel': TelefoneResponsavel.value
     }
     post(url, dados)
     scrollTo({
@@ -238,6 +254,17 @@ for (let campo of fields2) {
     })
 }
 for (let campo of fields3) {
+    campo.addEventListener("blur", () => {
+        if (!campo.checkValidity()) {
+            campo.style.border = "1px solid red"
+            campo.style.focus = 'red'
+        } else {
+            campo.style.border = "1px solid black"
+        }
+    })
+}
+
+for (let campo of fields4) {
     campo.addEventListener("blur", () => {
         if (!campo.checkValidity()) {
             campo.style.border = "1px solid red"
@@ -340,6 +367,7 @@ function skip3() {
 function skip4() {
 
     var camposInvalidos = 0
+    checarValidade(NomeResponsavel)
 
     for (var c of fields3) {
         if (!c.checkValidity()) {
@@ -349,7 +377,27 @@ function skip4() {
         } else {
             c.style.border = "1px solid black"
         }
-    } if (camposInvalidos === 0) {
+    } 
+
+    if (checarValidade(RFIput) === false) {
+        RFIput.style.border = "1px solid red"
+        document.querySelector('.etapa3 p').style.display = 'block'
+        camposInvalidos = camposInvalidos + 1
+    }
+
+    if (TRFInput.value.length !== 15){
+        TRFInput.style.border = "1px solid red"
+        document.querySelector('.etapa3 p').style.display = 'block'
+        camposInvalidos = camposInvalidos + 1
+    }
+    if (CNPJInput.value.length !== 18){
+        CNPJInput.style.border = "1px solid red"
+        document.querySelector('.etapa3 p').style.display = 'block'
+        camposInvalidos = camposInvalidos + 1
+    }
+
+    console.log(camposInvalidos)
+    if (camposInvalidos === 0) {
         document.getElementById('step3').style.display = "none";
         document.getElementById('step4').style.display = "flex";
         document.querySelector('.etapa3 p').style.display = 'none';
@@ -380,6 +428,7 @@ submitButton.addEventListener("click", function (event) {
     event.preventDefault()
     var camposInvalidos = 0
     checarValidade(RFIput)
+    checarValidade(NomeResponsavel)
 
     for (const c of fields4) {
         if (!c.checkValidity()) {
@@ -390,15 +439,16 @@ submitButton.addEventListener("click", function (event) {
             c.style.border = "1px solid black"
         }
     } 
-
-    if (checarValidade(RFIput) === false) {
-        RFIput.style.border = "1px solid red"
+    if (checarValidade(NomeResponsavel) === false) {
+        NomeResponsavel.style.border = "1px solid red"
         document.querySelector('.etapa4 p').style.display = 'block'
         camposInvalidos = camposInvalidos + 1
+    } else {
+        NomeResponsavel.style.border = "1px solid black"
     }
 
-    if (TRFInput.value.length !== 15){
-        TRFInput.style.border = "1px solid red"
+    if (TelefoneResponsavel.value.length !== 15){
+        TelefoneResponsavel.style.border = "1px solid red"
         document.querySelector('.etapa4 p').style.display = 'block'
         camposInvalidos = camposInvalidos + 1
     }
