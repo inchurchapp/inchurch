@@ -26,11 +26,12 @@ const passar2 = document.querySelector(".skip3")
 const fields2 = document.querySelectorAll('.etp2[required]')
 const fields3 = document.querySelectorAll('.etp3[required]')
 const fields1 = document.querySelectorAll('.etp1[required]')
+const fields4 = document.querySelectorAll('.etp4[required]')
 console.log(fields1)
 
 const fields = document.querySelectorAll('select')
 
-const msgSucesso = document.querySelector('.sombra')
+const msgSucesso = document.querySelector('.mensagemSucesso')
 
 document.addEventListener("keypress" , function(e) {
     
@@ -68,8 +69,8 @@ document.addEventListener("keypress" , function(e) {
     if (camposInvalidos === 0) {
         RFIput.style.border = "1px solid black"
         document.querySelector('.etapa3 p').style.display = 'none'
-        enviaFormAutomate()
-        enviaFormPipz()
+        // enviaFormAutomate()
+        // enviaFormPipz()
         enviaForm()
     }
     }
@@ -114,7 +115,8 @@ function enviaFormPipz() {
         'Custom Fields Company Telefone Responsável Granito': TRFInput.value,
         'Custom Fields Company Primeira Solucao': solucao1Input.value,
         'Custom Fields Company Segunda Solucao': solucao2Input.value,
-        'Custom Fields Company Terceira Solucao': solucao3Input.value
+        'Custom Fields Company Terceira Solucao': solucao3Input.value,
+        
     }
     post(url, dados)
 }
@@ -214,17 +216,6 @@ emailInput.addEventListener("blur", () => {
     }
 })
 
-CNPJInput.addEventListener('keypress', () =>{
-   cnpjTamanho = CNPJInput.value.length
-
-   if (cnpjTamanho === 2 || cnpjTamanho === 6){
-       CNPJInput.value += '.'
-   } else if ( cnpjTamanho === 10){
-    CNPJInput.value += '/'
-   } else if ( cnpjTamanho === 15){
-    CNPJInput.value += '-'
-   }
-})
 
 for (let campo of fields1) {
     campo.addEventListener("blur", () => {
@@ -346,6 +337,26 @@ function skip3() {
     }
 }
 
+function skip4() {
+
+    var camposInvalidos = 0
+
+    for (var c of fields3) {
+        if (!c.checkValidity()) {
+            c.style.border = "1px solid red"
+            document.querySelector('.etapa3 p').style.display = 'block'
+            camposInvalidos = camposInvalidos + 1
+        } else {
+            c.style.border = "1px solid black"
+        }
+    } if (camposInvalidos === 0) {
+        document.getElementById('step3').style.display = "none";
+        document.getElementById('step4').style.display = "flex";
+        document.querySelector('.etapa3 p').style.display = 'none';
+        document.querySelector('.etapa3').style.display = 'none';
+    }
+}
+
 // Botões  de voltar
 function back1() {
     document.getElementById('step2').style.display = "none";
@@ -355,6 +366,10 @@ function back1() {
 function back2() {
     document.getElementById('step3').style.display = "none";
     document.getElementById('step2').style.display = "flex";
+}
+function back3() {
+    document.getElementById('step4').style.display = "none";
+    document.getElementById('step3').style.display = "flex";
 }
 
 // Evento submit
@@ -366,9 +381,9 @@ submitButton.addEventListener("click", function (event) {
     var camposInvalidos = 0
     checarValidade(RFIput)
 
-    for (const c of fields3) {
+    for (const c of fields4) {
         if (!c.checkValidity()) {
-            document.querySelector('.etapa3 p').style.display = 'block'
+            document.querySelector('.etapa4 p').style.display = 'block'
             c.style.border = "1px solid red"
             camposInvalidos = camposInvalidos + 1
         } else {
@@ -378,21 +393,21 @@ submitButton.addEventListener("click", function (event) {
 
     if (checarValidade(RFIput) === false) {
         RFIput.style.border = "1px solid red"
-        document.querySelector('.etapa3 p').style.display = 'block'
+        document.querySelector('.etapa4 p').style.display = 'block'
         camposInvalidos = camposInvalidos + 1
     }
 
     if (TRFInput.value.length !== 15){
         TRFInput.style.border = "1px solid red"
-        document.querySelector('.etapa3 p').style.display = 'block'
+        document.querySelector('.etapa4 p').style.display = 'block'
         camposInvalidos = camposInvalidos + 1
     }
 
     if (camposInvalidos === 0) {
         RFIput.style.border = "1px solid black"
-        document.querySelector('.etapa3 p').style.display = 'none'
-        enviaFormAutomate()
-        enviaFormPipz()
+        document.querySelector('.etapa4 p').style.display = 'none'
+        // enviaFormAutomate()
+        // enviaFormPipz()
         enviaForm()
     }
 }) 

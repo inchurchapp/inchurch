@@ -8,22 +8,24 @@
     <link rel="stylesheet" href="estilo.css">
     <link rel="stylesheet"
         href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+    <link rel="stylesheet" href="./assets/css/cabecalho.css">
+    <link rel="stylesheet" href="./assets/css/mensagemSucesso/mensegemSucess.css">
     <title>Formulario</title>
 </head>
 
 <body>
     <header>
-        <div>
+        <nav class="cabecalho">
             <div class="imagem">
-             <a href="index.html"><img class="logo" src="logo.png" alt=""></a>
+             <a href="index.html"><img class="cabecalho__logo" src="logo.png" alt=""></a>
             </div>
-        </div>
+        </nav>
     </header>
     <main>
         <h1> Preencha os dados para o fechamento <br> em apenas 3 etapas. </h1>
-        <div class="sombra">
-            <div class="card-sucesso">
-                <div class="mensagem">
+        <section class="mensagemSucesso">
+            <div class="mensagemSucesso__card">
+                <div class="mensagemSucesso__mensagem">
                     <h3>Obrigado por preencher o formulário!</h3>
                     <img src="sucesso.png" alt="">
                     <span class="material-symbols-outlined">
@@ -31,15 +33,15 @@
                     </span>
                 </div>
             </div>
-        </div>
+        </section>
 
-        <div class="conteudo-ilustracao">
+        <div class="conteudoEIlustracao">
 
-            <div class="ilust">
+            <div class="conteudoEIlustracao__ilustracao">
                 <img src="Mobile Marketing-bro.svg" alt="">
             </div>
 
-            <div class="card-forms">
+            <div class="conteudoEIlustracao__cardForms">
                 <form action="">
 
                     <div class="etapa1" id="step1">
@@ -47,6 +49,8 @@
                         <p class="erro">Preencha todos os campos</p>
                         <input type="text" id="Name" class="etp1" placeholder="Nome completo" required>
                         <small>Ex: Nome Sobrenome</small>
+                        <input data-mask="(00) 00000-0000" type="tel" id="Name" class="etp1" placeholder="Telefone" required>
+                        <small>Ex: (XX) 9XXXX-XXXX</small>
                         <input type="email" id="Email" class="etp1" placeholder="Email do Contato" required>
                         <small>Ex: exemplo@dominio.com</small>
                         <input type="text" id="CompanyName" class="etp1" placeholder="Nome da Igreja" required>
@@ -78,13 +82,12 @@
                             <button onclick="back1()" class="back1"> Voltar </button>
                             <button onclick="skip3()" class="skip3"> Proximo </button>
                         </div>
-
                     </div>
 
                     <div class="etapa3" id="step3">
                         <h3>Dados financeiros</h3>
                         <p class="erro">Preencha todos os campos</p>
-                        <input type="text" maxlength="18" minlength="14" id="CustomFieldsCompanyCNPJ" class="etp3" placeholder="CNPJ da Igreja" required>
+                        <input type="text" maxlength="18" minlength="14" id="CustomFieldsCompanyCNPJ" data-mask="00.000.000/0000-00" class="etp3" placeholder="CNPJ da Igreja" required>
                         <small>Ex: xx.xxx.xxx\xxxx-xx</small>
                         <input type="text" id="CustomFieldsCompanyRazaoSocial" class="etp3"
                             placeholder="Razão Social da Igreja" required>
@@ -212,6 +215,23 @@
 
                         <div class="botoes">
                             <button onclick="back2()" class="back2"> Voltar </button>
+                            <button onclick="skip4()" class="skip4"> Proximo </button>
+                        </div>
+
+                    </div>
+
+                    <div class="etapa4" id="step4">
+                        <h3>Responsável pela jornada</h3>
+                        <p class="erro">Preencha todos os campos</p>
+                        <input type="text" id="NameResponsavel" class="etp4" placeholder="Nome do responsavel" required>
+                        <small>Ex: Nome Sobrenome</small>
+                        <input type="email" id="EmailResponsavel" class="etp4" placeholder="Email do responsável" required>
+                        <small>Ex: exemplo@dominio.com</small>
+                        <input data-mask="(00) 00000-0000" type="tel" id="TelefoneResponsavel" class="etp4" placeholder="Telefone do responsável" required>
+                        <small>Ex: (XX) 9XXXX-XXXX</small>
+
+                        <div class="botoes">
+                            <button onclick="back3()" class="back3"> Voltar </button>
                             <input type="submit" id="btn-enviar">
                         </div>
 

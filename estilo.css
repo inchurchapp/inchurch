@@ -31,16 +31,6 @@ small{
   'GRAD' 0,
   'opsz' 48
 } */
-
-header>div{
-    text-align: center;
-    color: #000000;
-    background: rgb(245, 245, 245); 
-    box-shadow: 5px 5px 15px #9b9b9b; 
-    width: 100vw;
-    text-align: left;
-    padding: 5px 5px;
-}
 h1{
     text-align: center;
     color: #ffffff;
@@ -51,85 +41,17 @@ h1{
 p{
     font-family: Arial, Helvetica, sans-serif;
 }
-
-.sombra{
-    display: none;
-    position: absolute;
-    top: 0;
-    background: #00000071;
-    width: 100%;
-    height: 100em;
-}
-
-.sombra small{
-    text-align: center;
-    font-size: 15px;
-    line-height: 30px;
-}
-
-.sombra span {
-    width: 100%;
-    text-align: right;
-    margin-top: 15px;
-    margin-right: 30px;
-    line-height: 1px;
-    opacity: 50%;
-    cursor: pointer;
-}
-
-.card-sucesso{
-    /* display: none; */
-    position: absolute;
-    top: 70px;
-    left: 50%;
-    transform: translateX(-50%);
-    /* width: 400px;  <-- prefiro assim */
-    width: 300px;
-    padding: 5px;
-    height: 40% /2;
-    background: #ffffff;
-    opacity: 96%;
-    border-radius: 5px;
-    box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.555);
-}
-
-.mensagem{
-    position:sticky;
-    margin: 3px;
-    display: flex;
-    flex-direction: column-reverse;
-    align-items: center;
-}
-
-.card-sucesso h3{
-    color: #96E035;
-    font-size: 20px;
-    width: 100%;
-    text-align: center;
-    margin-bottom:  2.5px;
-}
-.card-sucesso img{
-    width: 50px;
-}
-
-
-.logo{
-    width: 120px;
-    background: #888888;
-    padding: 8px 17px;
-    border-radius: 15px;
-}
-
-.conteudo-ilustracao{
+/* ------------ */
+.conteudoEIlustracao{
     display: flex;
     width: 100%;
     justify-content: space-evenly;
 }
 
-.ilust{
+.conteudoEIlustracao__ilustracao{
     width: 30%;
 }
-.card-forms{
+.conteudoEIlustracao__cardForms{
      display: flex;
      justify-content: center;
      padding-top: 15px;
@@ -144,7 +66,7 @@ form{
     text-align: center;
 }
 
-.etapa1, .etapa2, .etapa3{
+.etapa1, .etapa2, .etapa3, .etapa4{
      display: flex;
      flex-direction: column;
      width: 100%;
@@ -156,7 +78,7 @@ form{
      
 }
 
-.etapa1 h3, .etapa2 h3, .etapa3 h3{
+.etapa1 h3, .etapa2 h3, .etapa3 h3, .etapa4 h3{
     width: 90%;
     text-align: left;
     margin: 5px 30px;
@@ -181,6 +103,10 @@ form{
    display: none;
 }
 
+.etapa4{
+    display: none
+}
+
 .container{
     border: 1px solid #cfcfcf;
     height: 40px;
@@ -199,6 +125,15 @@ form{
     transform: translateY(-50%);
     box-sizing: border-box;
   }
+
+  #CustomFieldsCompanyCNPJ::-webkit-inner-spin-button,
+  #CustomFieldsCompanyCNPJ::-webkit-outer-spin-button{
+    -webkit-appearance:none;
+  }
+  input[type="number"]{
+    -moz-appearance:textfield;
+  }
+
   .select-container select {
     padding-left: 13px;
     height: 100%;
@@ -243,7 +178,7 @@ input::after{
     content: 'teste';
 }
 
-.botao, .skip2, .skip3, .btn-enviar, .back1, .back2{
+.botao, .skip2, .skip3, .skip3, .btn-enviar, .back1, .back2, .back3{
     background: #f4f4f4;
     border: none;
     margin: 5px 30px;
@@ -256,7 +191,7 @@ input::after{
     cursor: pointer;
 }
 
-.back1, .back2{
+.back1, .back2, .back2{
     background: #e6e6e6;
 }
 
@@ -264,7 +199,7 @@ button:hover{
     box-shadow: 1px 1px 5px black;
 }
 
-.skip2, .skip3, .btn-enviar{
+.skip2, .skip3, .skip4, .btn-enviar{
     background: #96E035;
 }
 
@@ -332,7 +267,7 @@ footer{
         margin-bottom: 20px;
     }
 
-    .card-sucesso{
+    .mensagemSucesso__card{
         width: 60%;
     }
 
@@ -345,7 +280,7 @@ footer{
         
     }
 
-    .conteudo-ilustracao{
+    .conteudoEIlustracao{
         flex-direction: column-reverse;
         align-items: center;
     }
@@ -353,7 +288,7 @@ footer{
         width: 100%;
     }
     
-    .etapa1, .etapa2, .etapa3{
+    .etapa1, .etapa2, .etapa3, .etapa4{
         width: 100%;    
         height: 100%;
         align-items: center;
@@ -374,7 +309,7 @@ footer{
        width: 100%;
    }
 
-    .ilust{
+    .conteudoEIlustracao__ilustracao{
         position: static;
         justify-items: center;
         width: 100%;

@@ -1,0 +1,54 @@
+.mensagemSucesso{
+    display: none;
+    position: absolute;
+    top: 0;
+    background: #00000071;
+    width: 100vw;
+    height: 100em;
+}
+.mensagemSucesso__card{
+    display: none;
+    position: absolute;
+    top: 70px;
+    left: 50%;
+    transform: translateX(-50%);
+    /* width: 400px;  <-- prefiro assim */
+    width: 300px;
+    padding: 5px;
+    height: 40% /2;
+    background: #ffffff;
+    opacity: 96%;
+    border-radius: 5px;
+    box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.555);
+}
+.mensagemSucesso small{
+    text-align: center;
+    font-size: 15px;
+    line-height: 30px;
+}
+.mensagemSucesso span {
+    width: 100%;
+    text-align: right;
+    margin-top: 15px;
+    margin-right: 30px;
+    line-height: 1px;
+    opacity: 50%;
+    cursor: pointer;
+}
+.mensagemSucesso__card h3{
+    color: #96E035;
+    font-size: 20px;
+    width: 100%;
+    text-align: center;
+    margin-bottom:  2.5px;
+}
+.mensagemSucesso__card img{
+    width: 50px;
+}
+.mensagemSucesso__mensagem{
+    position:sticky;
+    margin: 3px;
+    display: flex;
+    flex-direction: column-reverse;
+    align-items: center;
+}

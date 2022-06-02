@@ -1,0 +1,16 @@
+.cabecalho{
+    text-align: center;
+    color: #000000;
+    background: rgb(245, 245, 245); 
+    box-shadow: 5px 5px 15px #9b9b9b; 
+    width: 100vw;
+    text-align: left;
+    padding: 5px 5px;
+}
+
+.cabecalho__logo{
+    width: 120px;
+    background: #888888;
+    padding: 8px 17px;
+    border-radius: 15px;
+}
