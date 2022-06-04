@@ -336,8 +336,7 @@ function skip2() {
         nomeInput.style.border = "1px solid black"
     }
 
-    if (camposInvalidos === 0 && document.querySelector('.etapa3').style.display === '') {
-        
+    if (camposInvalidos === 0) {
         document.getElementById('step1').style.display = "none";
         document.getElementById('step2').style.display = "flex";
         document.querySelector('.etapa1 p').style.display = "none";
