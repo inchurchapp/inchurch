@@ -32,21 +32,26 @@ const fields2 = document.querySelectorAll('.etp2[required]')
 const fields3 = document.querySelectorAll('.etp3[required]')
 const fields1 = document.querySelectorAll('.etp1[required]')
 const fields4 = document.querySelectorAll('.etp4[required]')
-console.log(fields1)
+
+var etapa = 1
+console.log(etapa)
 
 const fields = document.querySelectorAll('select')
 
 const msgSucesso = document.querySelector('.mensagemSucesso')
 
 document.addEventListener("keypress" , function(e) {
+
+    switch(e.key, etapa){
+        case 'Enter', 1: skip2()
+        break;
+        case 'Enter', 2: skip3()
+        break;
+        case 'Enter', 3: skip4()
+        break            
+    }
     
-    if(e.key ==="Enter" && document.getElementById('step1').style.display === "flex"){
-        skip2()
-    } else if(e.key ==="Enter" && document.getElementById('step2').style.display === "flex"){
-        skip3()
-    } else if(e.key ==="Enter" && document.getElementById('step3').style.display === "flex"){
-        skip4()
-    }else if(e.key ==="Enter" && document.getElementById('step4').style.display === "flex"){
+    if(e.key ==="Enter" && etapa === 4){
         event.preventDefault()
     var camposInvalidos = 0
     checarValidade(RFIput)
@@ -340,6 +345,8 @@ function skip2() {
         document.getElementById('step1').style.display = "none";
         document.getElementById('step2').style.display = "flex";
         document.querySelector('.etapa1 p').style.display = "none";
+        etapa = 2;
+        console.log(etapa)
     }
 }
 
@@ -360,6 +367,8 @@ function skip3() {
         document.getElementById('step3').style.display = "flex";
         document.querySelector('.etapa2 p').style.display = 'none';
         document.querySelector('.etapa2').style.display = 'none';
+        etapa = 3
+        console.log(etapa)
     }
 }
 
