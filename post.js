@@ -42,50 +42,52 @@ const msgSucesso = document.querySelector('.mensagemSucesso')
 
 document.addEventListener("keypress" , function(e) {
 
-    switch(e.key, etapa){
-        case 'Enter', 1: skip2()
+    if(e.key === 'Enter'){
+    switch(etapa){
+        case 1: skip2()
+        console.log(e.key)
         break;
-        case 'Enter', 2: skip3()
+        case 2: skip3()
+        console.log(e.key)
         break;
-        case 'Enter', 3: skip4()
-        break            
-    }
-    
-    if(e.key ==="Enter" && etapa === 4){
+        case 3: skip4()
+        break 
+        case 4: 
         event.preventDefault()
-    var camposInvalidos = 0
-    checarValidade(RFIput)
-
-    for (const c of fields4) {
-        if (!c.checkValidity()) {
-            document.querySelector('.etapa4 p').style.display = 'block'
-            c.style.border = "1px solid red"
+        var camposInvalidos = 0
+        checarValidade(RFIput)
+    
+        for (const c of fields4) {
+            if (!c.checkValidity()) {
+                document.querySelector('.etapa4 p').style.display = 'block'
+                c.style.border = "1px solid red"
+                camposInvalidos = camposInvalidos + 1
+            } else {
+                c.style.border = "1px solid black"
+            }
+        } 
+    
+        if (checarValidade(RFIput) === false) {
+            RFIput.style.border = "1px solid red"
+            document.querySelector('.etapa3 p').style.display = 'block'
             camposInvalidos = camposInvalidos + 1
-        } else {
-            c.style.border = "1px solid black"
         }
-    } 
-
-    if (checarValidade(RFIput) === false) {
-        RFIput.style.border = "1px solid red"
-        document.querySelector('.etapa3 p').style.display = 'block'
-        camposInvalidos = camposInvalidos + 1
-    }
-
-    if (TRFInput.value.length !== 15){
-        TRFInput.style.border = "1px solid red"
-        document.querySelector('.etapa3 p').style.display = 'block'
-        camposInvalidos = camposInvalidos + 1
-    }
-
-    if (camposInvalidos === 0) {
-        RFIput.style.border = "1px solid black"
-        document.querySelector('.etapa3 p').style.display = 'none'
-        // enviaFormAutomate()
-        // enviaFormPipz()
-        enviaForm()
-    }
-    }
+    
+        if (TRFInput.value.length !== 15){
+            TRFInput.style.border = "1px solid red"
+            document.querySelector('.etapa3 p').style.display = 'block'
+            camposInvalidos = camposInvalidos + 1
+        }
+    
+        if (camposInvalidos === 0) {
+            RFIput.style.border = "1px solid black"
+            document.querySelector('.etapa3 p').style.display = 'none'
+            // enviaFormAutomate()
+            // enviaFormPipz()
+            enviaForm()
+        }
+        break            
+    }}
 })
 
 // Função enviar
@@ -213,7 +215,7 @@ const showData = (result) => {
     }
 }
 
-CEPInput.addEventListener("keyup", (e) => {
+CEPInput.addEventListener("blur", (e) => {
     let search = CEPInput.value.replace("-", "")
     const options = {
         method: 'GET',
