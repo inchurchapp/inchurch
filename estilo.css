@@ -178,7 +178,7 @@ input::after{
     content: 'teste';
 }
 
-.botao, .skip2, .skip3, .skip4, .btn-enviar, .back1, .back2, .back3{
+.botao, .skip2, .skip3, .skip4, .finalizar, .back1, .back2, .back3{
     background: #f4f4f4;
     border: none;
     margin: 5px 30px;
@@ -199,7 +199,7 @@ button:hover{
     box-shadow: 1px 1px 5px black;
 }
 
-.skip2, .skip3, .skip4, .btn-enviar{
+.skip2, .skip3, .skip4, .finalizar{
     background: #96E035;
 }
 

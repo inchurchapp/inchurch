@@ -45,47 +45,51 @@ document.addEventListener("keypress" , function(e) {
     if(e.key === 'Enter'){
     switch(etapa){
         case 1: skip2()
-        console.log(e.key)
         break;
         case 2: skip3()
-        console.log(e.key)
         break;
         case 3: skip4()
         break 
         case 4: 
-        event.preventDefault()
-        var camposInvalidos = 0
-        checarValidade(RFIput)
-    
-        for (const c of fields4) {
-            if (!c.checkValidity()) {
+        
+        submitButton.addEventListener("keypress", function (event) {
+            event.preventDefault()
+            var camposInvalidos = 0
+            checarValidade(RFIput)
+            checarValidade(NomeResponsavel)
+        
+            for (const c of fields4) {
+                if (!c.checkValidity()) {
+                    document.querySelector('.etapa4 p').style.display = 'block'
+                    c.style.border = "1px solid red"
+                    camposInvalidos = camposInvalidos + 1
+                } else {
+                    c.style.border = "1px solid black"
+                }
+            } 
+            if (checarValidade(NomeResponsavel) === false) {
+                NomeResponsavel.style.border = "1px solid red"
                 document.querySelector('.etapa4 p').style.display = 'block'
-                c.style.border = "1px solid red"
                 camposInvalidos = camposInvalidos + 1
             } else {
-                c.style.border = "1px solid black"
+                NomeResponsavel.style.border = "1px solid black"
             }
-        } 
-    
-        if (checarValidade(RFIput) === false) {
-            RFIput.style.border = "1px solid red"
-            document.querySelector('.etapa3 p').style.display = 'block'
-            camposInvalidos = camposInvalidos + 1
-        }
-    
-        if (TRFInput.value.length !== 15){
-            TRFInput.style.border = "1px solid red"
-            document.querySelector('.etapa3 p').style.display = 'block'
-            camposInvalidos = camposInvalidos + 1
-        }
-    
-        if (camposInvalidos === 0) {
-            RFIput.style.border = "1px solid black"
-            document.querySelector('.etapa3 p').style.display = 'none'
-            // enviaFormAutomate()
-            // enviaFormPipz()
-            enviaForm()
-        }
+        
+            if (TelefoneResponsavel.value.length !== 15){
+                TelefoneResponsavel.style.border = "1px solid red"
+                document.querySelector('.etapa4 p').style.display = 'block'
+                camposInvalidos = camposInvalidos + 1
+            }
+        
+            if (camposInvalidos === 0) {
+                RFIput.style.border = "1px solid black"
+                document.querySelector('.etapa4 p').style.display = 'none'
+                // enviaFormAutomate()
+                // enviaFormPipz()
+                enviaForm()
+            }
+        })
+
         break            
     }}
 })
@@ -200,9 +204,9 @@ function enviaForm() {
 
 // reload na mensagem de sucesso
 
-msgSucesso.addEventListener("click", event => {
+function closeReload() {
     location.reload()
-})
+}
 
 
 // Consulta de CEP e validações
@@ -343,7 +347,7 @@ function skip2() {
         nomeInput.style.border = "1px solid black"
     }
 
-    if (camposInvalidos === 0) {
+    if (camposInvalidos === 0 && document.querySelector('.etapa3').style.display === '') {
         document.getElementById('step1').style.display = "none";
         document.getElementById('step2').style.display = "flex";
         document.querySelector('.etapa1 p').style.display = "none";
@@ -364,7 +368,7 @@ function skip3() {
         } else {
             c.style.border = "1px solid black"
         }
-    } if (camposInvalidos === 0) {
+    } if (camposInvalidos === 0 && document.querySelector('.etapa4').style.display === '') {
         document.getElementById('step2').style.display = "none";
         document.getElementById('step3').style.display = "flex";
         document.querySelector('.etapa2 p').style.display = 'none';
@@ -413,6 +417,7 @@ function skip4() {
         document.querySelector('.etapa3 p').style.display = 'none';
         document.querySelector('.etapa3').style.display = 'none';
     }
+    etapa = 4
 }
 
 // Botões  de voltar
@@ -432,7 +437,8 @@ function back3() {
 
 // Evento submit
 
-const submitButton = document.querySelector('#btn-enviar')
+const submitButton = document.querySelector('.finalizar')
+
 
 submitButton.addEventListener("click", function (event) {
     event.preventDefault()
@@ -471,3 +477,41 @@ submitButton.addEventListener("click", function (event) {
         enviaForm()
     }
 }) 
+
+// function finalizar(){
+//     var camposInvalidos = 0
+//     checarValidade(RFIput)
+//     checarValidade(NomeResponsavel)
+
+//     for (const c of fields4) {
+//         if (!c.checkValidity()) {
+//             document.querySelector('.etapa4 p').style.display = 'block'
+//             c.style.border = "1px solid red"
+//             camposInvalidos = camposInvalidos + 1
+//         } else {
+//             c.style.border = "1px solid black"
+//         }
+//     } 
+//     if (checarValidade(NomeResponsavel) === false) {
+//         NomeResponsavel.style.border = "1px solid red"
+//         document.querySelector('.etapa4 p').style.display = 'block'
+//         camposInvalidos = camposInvalidos + 1
+//     } else {
+//         NomeResponsavel.style.border = "1px solid black"
+//     }
+
+//     if (TelefoneResponsavel.value.length !== 15){
+//         TelefoneResponsavel.style.border = "1px solid red"
+//         document.querySelector('.etapa4 p').style.display = 'block'
+//         camposInvalidos = camposInvalidos + 1
+//     }
+
+//     if (camposInvalidos === 0) {
+
+//         RFIput.style.border = "1px solid black"
+//         document.querySelector('.mensagemSucesso__card').style.display = 'flex'
+//         // enviaFormAutomate()
+//         // enviaFormPipz()
+//         enviaForm()
+//     }
+// }
