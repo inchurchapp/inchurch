@@ -51,6 +51,11 @@ p{
 .conteudoEIlustracao__ilustracao{
     width: 30%;
 }
+
+.conteudoEIlustracao__ilustracao img{
+    width: 95%;
+}
+
 .conteudoEIlustracao__cardForms{
      display: flex;
      justify-content: center;
@@ -253,7 +258,7 @@ footer{
     margin-top: 10px;
 }
 
-@media screen and (max-width: 1000px) {
+@media screen and (max-width: 1500px) {
     main{
         display: flex;
         flex-direction: column;
