@@ -82,8 +82,8 @@ document.addEventListener("keypress" , function(e) {
             if (camposInvalidos === 0) {
                 RFIput.style.border = "1px solid black"
                 document.querySelector('.etapa4 p').style.display = 'none'
-                // enviaFormAutomate()
-                // enviaFormPipz()
+                enviaFormAutomate()
+                enviaFormPipz()
                 enviaForm()
             }
       
@@ -478,8 +478,8 @@ submitButton.addEventListener("click", function (event) {
     if (camposInvalidos === 0) {
         RFIput.style.border = "1px solid black"
         document.querySelector('.etapa4 p').style.display = 'none'
-        // enviaFormAutomate()
-        // enviaFormPipz()
+        enviaFormAutomate()
+        enviaFormPipz()
         enviaForm()
     }
 }) 
