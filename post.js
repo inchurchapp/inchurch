@@ -51,8 +51,6 @@ document.addEventListener("keypress" , function(e) {
         case 3: skip4()
         break 
         case 4: 
-        
-        submitButton.addEventListener("keypress", function (event) {
             event.preventDefault()
             var camposInvalidos = 0
             checarValidade(RFIput)
@@ -88,7 +86,7 @@ document.addEventListener("keypress" , function(e) {
                 // enviaFormPipz()
                 enviaForm()
             }
-        })
+      
 
         break            
     }}
@@ -368,7 +366,15 @@ function skip3() {
         } else {
             c.style.border = "1px solid black"
         }
-    } if (camposInvalidos === 0 && document.querySelector('.etapa4').style.display === '') {
+    } 
+    
+    if (CEPInput.value.length !== 9){
+        CEPInput.style.border = "1px solid red"
+        document.querySelector('.etapa2 p').style.display = 'block'
+        camposInvalidos = camposInvalidos + 1
+    }
+    
+    if (camposInvalidos === 0 && document.querySelector('.etapa4').style.display === '') {
         document.getElementById('step2').style.display = "none";
         document.getElementById('step3').style.display = "flex";
         document.querySelector('.etapa2 p').style.display = 'none';
