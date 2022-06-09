@@ -317,14 +317,17 @@ footer{
     .conteudoEIlustracao__ilustracao{
         position: static;
         justify-items: center;
-        width: 100%;
+        width: 50%;
         text-align: center;
         margin-top: 10px;
     }
-    img{
-        width: 60%;
+    .conteudoEIlustracao__ilustracao img{
+        width: 80%;
     }
     @media screen and (max-width: 430px){
+        .conteudoEIlustracao__ilustracao{
+            width: 70%;
+        }
         h1 {
             font-size: 1.5em;
         }
