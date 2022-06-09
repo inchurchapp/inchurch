@@ -277,12 +277,28 @@ footer{
     }
 
     .card-forms{
-        width: 95%;
+        width: 100%;
     }
 
     form{
         justify-content: center;
         
+    }
+
+    .conteudoEIlustracao__ilustracao{
+        position: static;
+        justify-items: center;
+        width: 550px;
+        text-align: center;
+        margin-top: 10px;
+    }
+    .conteudoEIlustracao__ilustracao img{
+        width: 80%;
+    }
+
+    .conteudoEIlustracao__cardForms{
+        width: 90%;
+        margin-bottom: 30px;
     }
 
     .conteudoEIlustracao{
@@ -313,20 +329,9 @@ footer{
    .skip2{
        width: 100%;
    }
-
-    .conteudoEIlustracao__ilustracao{
-        position: static;
-        justify-items: center;
-        width: 50%;
-        text-align: center;
-        margin-top: 10px;
-    }
-    .conteudoEIlustracao__ilustracao img{
-        width: 80%;
-    }
-    @media screen and (max-width: 430px){
+    @media screen and (max-width: 561px){
         .conteudoEIlustracao__ilustracao{
-            width: 70%;
+            width: 80%;
         }
         h1 {
             font-size: 1.5em;
