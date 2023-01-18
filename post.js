@@ -134,7 +134,8 @@ function enviaFormPipz() {
         'Custom Fields Company Terceira Solucao': solucao3Input.value,
         'Nome Responsavel': NomeResponsavel.value,
         'EmailResponsavel': EmailResponsavel.value,
-        'TelefoneResponsavel': TelefoneResponsavel.value
+        'TelefoneResponsavel': TelefoneResponsavel.value,
+        'url': window.location.href.toString()
 
     }
     post(url, dados)
@@ -163,7 +164,8 @@ function enviaFormAutomate() {
         'Custom Fields Company Terceira Solucao': solucao3Input.value,
         'Nome Responsavel': NomeResponsavel.value,
         'EmailResponsavel': EmailResponsavel.value,
-        'TelefoneResponsavel': TelefoneResponsavel.value
+        'TelefoneResponsavel': TelefoneResponsavel.value,
+        'url': window.location.href.toString()
     }
     post(url, dados)
 }
@@ -191,7 +193,8 @@ function enviaForm() {
         'Custom Fields Company Terceira Solucao': solucao3Input.value,
         'Nome Responsavel': NomeResponsavel.value,
         'EmailResponsavel': EmailResponsavel.value,
-        'TelefoneResponsavel': TelefoneResponsavel.value
+        'TelefoneResponsavel': TelefoneResponsavel.value,
+        'url': window.location.href.toString()
     }
     post(url, dados)
     scrollTo({
